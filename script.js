@@ -9,3 +9,4 @@ fetch(url, {
 .then(response => response.json()) 
   .then(response => {
     renderResults(response.results[0].members)
+})
