@@ -1,4 +1,4 @@
-const url = "https://api.propublica.org/congress/116";
+const url = "https://api.propublica.org/congress/116/senate/members.json";
 fetch(url, {
   method: "GET",
   mode: "CORS",
