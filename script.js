@@ -10,7 +10,7 @@ fetch(url, {
     .then(response => {
     renderResults(response.results[0].members)
   })
-
+/*
 function renderResults(data){
   console.log(data)
   const members = data.map((member) =>
@@ -23,3 +23,4 @@ function renderResults(data){
       <ul>{members}</ul>,
       document.getElementById('members'))
 }
+*/
