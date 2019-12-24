@@ -1,4 +1,3 @@
-var fetchConfig =
         fetch(https://api.propublica.org/congress/v1/116/senate/members.json, {
             method: "GET",
             headers: new Headers({
@@ -8,5 +7,4 @@ var fetchConfig =
             if (response.ok)
                 return response.json();
         }).then(function (json) {
-          
           
