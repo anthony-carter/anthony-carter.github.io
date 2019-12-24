@@ -10,9 +10,11 @@ fetch(url, {
     .then(response => {
     renderResults(response.results[0].members)
   })
-/*
+
 function renderResults(data){
   console.log(data)
+            
+            /*
   const members = data.map((member) =>
     <li>
       <a href={member.url} target='_blank'>{`${member.first_name} ${member.last_name}, ${member.office}`}</a>
@@ -22,5 +24,8 @@ function renderResults(data){
     ReactDOM.render(
       <ul>{members}</ul>,
       document.getElementById('members'))
+      
+      */
+
 }
-*/
+
