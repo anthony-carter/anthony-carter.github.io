@@ -8,13 +8,13 @@ fetch(url, {
   })
     .then(response => response.json()) 
     .then(response => {
-    renderResults(response.results[0].members)
+    console.log(response.results[0].members)
   })
-
+    /*
 function renderResults(data){
   console.log(data)
             
-            /*
+        
   const members = data.map((member) =>
     <li>
       <a href={member.url} target='_blank'>{`${member.first_name} ${member.last_name}, ${member.office}`}</a>
