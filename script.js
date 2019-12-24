@@ -9,11 +9,7 @@ function start(url) {
   }).then(function (response) {
             if (response.ok)
                 return response.json();
-        }).then(function (json) {
-
+  }).then(function (json) {
             data = json;
             console.log("data", data);
-
-})
-
-
+  })
