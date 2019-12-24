@@ -1,41 +1,21 @@
-//const app = document.getElementById('root');
+let base64 = require('base-64');
 
-//const logo = document.createElement('img');
-//logo.src = 'logo.png';
+let url = 'https://api.propublica.org/congress/116/';
+let key = 'cHWA0cyVrIeIZHFmZyrlp3UBNFO1aqLn7LsYLij2';
 
-//const container = document.createElement('div');
-//container.setAttribute('class', 'container');
+let headers = new Headers();
 
-//app.appendChild(logo);
-//app.appendChild(container);
+//headers.append('Content-Type', 'text/json');
+headers.set('Authorization', 'Basic ' + base64.encode(key));
 
-var request = new XMLHttpRequest();
-request.open('GET', 'https://api.propublica.org/congress/116/', true);
-request.onload = function () {
+fetch(url, {method:'GET',
+        headers: headers,
+        //credentials: 'key'
+       })
+.then(response => response.json())
+.then(json => console.log(json));
+//.done();
 
-  // Begin accessing JSON data here
-  var data = JSON.parse(this.response);
-/*  if (request.status >= 200 && request.status < 400) {
-    data.forEach(movie => {
-      const card = document.createElement('div');
-      card.setAttribute('class', 'card');
-
-      const h1 = document.createElement('h1');
-      h1.textContent = movie.title;
-
-      const p = document.createElement('p');
-      movie.description = movie.description.substring(0, 300);
-      p.textContent = `${movie.description}...`;
-
-      container.appendChild(card);
-      card.appendChild(h1);
-      card.appendChild(p);
-    });
-  } else {
-    const errorMessage = document.createElement('marquee');
-    errorMessage.textContent = `Gah, it's not working!`;
-    app.appendChild(errorMessage);
-  }
+function parseJSON(response) {
+return response.json()
 }
-*/
-request.send();
