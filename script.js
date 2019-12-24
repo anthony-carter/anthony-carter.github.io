@@ -14,7 +14,7 @@ fetch(url, {
 function renderResults(data){
   console.log(data)
             
-        
+     
   const members = data.map((member) =>
     <li>
       <a href={member.url} target='_blank'>{`${member.first_name} ${member.last_name}, ${member.office}`}</a>
@@ -25,7 +25,8 @@ function renderResults(data){
       <ul>{members}</ul>,
       document.getElementById('members'))
       
-      */
+
 
 }
 
+      */
