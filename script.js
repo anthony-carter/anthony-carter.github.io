@@ -14,6 +14,6 @@ function start(url) {
             data = json;
             console.log("data", data);
 
-}
+})
 
 
