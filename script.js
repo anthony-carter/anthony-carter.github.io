@@ -1,21 +1,16 @@
-let base64 = require('base-64');
+const url = "https://api.propublica.org/congress/116";
+fetch(url, {
+  method: "GET",
+  withCredentials: true,
+  headers: {
+    "X-Auth-Token": "cHWA0cyVrIeIZHFmZyrlp3UBNFO1aqLn7LsYLij2"
+  }
+})
+  .then(resp => resp.json())
+  .then(function(data) {
+    console.log(data);
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
 
-let url = 'https://api.propublica.org/congress/116/';
-let key = 'cHWA0cyVrIeIZHFmZyrlp3UBNFO1aqLn7LsYLij2';
-
-let headers = new Headers();
-
-//headers.append('Content-Type', 'text/json');
-headers.set('Authorization', 'Basic ' + base64.encode(key));
-
-fetch(url, {method:'GET',
-        headers: headers,
-        //credentials: 'key'
-       })
-.then(response => response.json())
-.then(json => console.log(json));
-//.done();
-
-function parseJSON(response) {
-return response.json()
-}
