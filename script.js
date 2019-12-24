@@ -6,9 +6,13 @@ function start(url) {
             headers: new Headers({
                 "X-API-Key": 'cHWA0cyVrIeIZHFmZyrlp3UBNFO1aqLn7LsYLij2'
             })
-        })
-        .then(onDataFetched)
-        .catch(onDataFetched);
+  }).then(function (response) {
+            if (response.ok)
+                return response.json();
+        }).then(function (json) {
+
+            data = json;
+            console.log("data", data);
 
 }
 
