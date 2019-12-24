@@ -6,7 +6,7 @@ fetch(url, {
                 "X-API-Key": 'cHWA0cyVrIeIZHFmZyrlp3UBNFO1aqLn7LsYLij2'
             })
   })
-    .then(response => response.json()) 
+
     .then(response => {
     console.log(response.results[0].members)
   })
