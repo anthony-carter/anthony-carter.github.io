@@ -15,7 +15,7 @@ var main = new Vue({
     methods: {
         getData: function () {
             var fetchConfig =
-                fetch("https://api.propublica.org/congress/v1/113/senate/members.json", {
+                fetch("https://api.propublica.org/congress/v1/116/senate/members.json", {
                     method: "GET",
                     headers: new Headers({
                         "X-API-Key": 'cHWA0cyVrIeIZHFmZyrlp3UBNFO1aqLn7LsYLij2'
