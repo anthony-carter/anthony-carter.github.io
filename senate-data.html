@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Senate Starter Page</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="assets/styles/styles.css">
+
+</head>
+
+<body class="bg-danger">
+
+    <p id="source" class="d-none">https://api.propublica.org/congress/v1/116/senate/members.json</p>
+
+    <div class="bg-header container-fluid">
+        <div class="container d-flex align-items-center">
+            <header class="row d-flex align-items-center">
+                <div class="col-12 col-sm-4 col-md-3">
+                    <img src="assets/Logo1.jpg" class="logo img-thumbnail rounded-circle float-left" alt="logo.jpg">
+                </div>
+
+                <div class="col-12 col-sm-8 col-md-9">
+                    <h1 class="display-1 font-weight-bold text-light">TGIF</h1>
+                    <h2 class="text-muted text-black-50 font-weight-bold">Transparent Government In Fact</h2>
+                </div>
+            </header>
+        </div>
+
+        <div class="email container-fluid bg-danger">
+            <div class="container text-right">
+                <i class="fas fa-envelope" class="d-inline"></i>
+                <a href="mailto:info@tgif.net">
+                    info@tgif.net</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active bg-dark text-white" href="index.html">HOME</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle bg-light input-group-text" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">CONGRESS 113</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="senate-data.html">Senate</a>
+                        <a class="dropdown-item" href="house-data.html">House</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link active bg-dark text-white dropdown-toggle input-group-text" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ATTENDANCE</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="senate_attendance-statistic.html">Senate</a>
+                        <a class="dropdown-item" href="house_attendance-statistic.html">House</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link active bg-dark text-white dropdown-toggle input-group-text" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">PARTY LOYALTY</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="senate_party-loyalty-statistic.html">Senate</a>
+                        <a class="dropdown-item" href="house_party-loyalty-statistic.html">House</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <main id="members-data" class="container-fluid bg-light">
+
+        <div class="introduction container text-justify">
+            <h2>Senators</h2>
+            <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
+        </div>
+
+        <div class="container input-group flex-nowrap mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text text-dark font border border-dark" id="addon-wrapping">Search by name</span>
+            </div>
+            <input type="text" class="form-control border border-dark" placeholder="Please enter name (capital letters are considered)" aria-label="Username" aria-describedby="addon-wrapping" v-model="search" v-on:keyup="nullTable()">
+        </div>
+
+        <div class="container d-flex">
+            <div class="col-8 filter border border-dark border-right-0 rounded-top">
+                <span>Filter by Party&#58; </span>
+
+                <label for="R">Republican</label>
+                <input type="checkbox" id="R" name="Party" value="R" v-model="parties" v-on:change="nullTable()">
+                <label for="D">Democrat</label>
+                <input type="checkbox" id="D" name="Party" value="D" v-model="parties" v-on:change="nullTable()">
+                <label for="I">Independent</label>
+                <input type="checkbox" id="I" name="Party" value="I" v-model="parties" v-on:change="nullTable()">
+            </div>
+
+            <div class="col-4 filter border border-dark border-left-0 rounded-top">
+                <div class="float-right">
+                    <span>Filter by State&#58; </span>
+                    <select id="state" name="state" v-model="selectedState" v-on:change="nullTable()">
+                        <option id="all" value="">All</option>
+                        <option v-for="state in states">{{state}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <table class="table table-sm table-hover text-center">
+                <colgroup>
+                    <col style="width:28%">
+                    <col style="width:18%">
+                    <col style="width:18%">
+                    <col style="width:18%">
+                    <col style="width:18%">
+                </colgroup>
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Senator <button type="button" class="btn btn-sm bg-dark border-secondary btn-sort"><i id="0" class="fas fa-sort text-white"></i></button></th>
+                        <th scope="col">Party <button type="button" class="btn btn-sm bg-dark border-secondary btn-sort"><i id="1" class="fas fa-sort text-white"></i></button></th>
+                        <th scope="col">State <button type="button" class="btn btn-sm bg-dark border-secondary btn-sort"><i id="2" class="fas fa-sort text-white"></i></button></th>
+                        <th scope="col">Seniority <button type="button" class="btn btn-sm bg-dark border-secondary btn-sort"><i id="3" class="fas fa-sort text-white"></i></button></th>
+                        <th scope="col">Party Votes <button type="button" class="btn btn-sm bg-dark border-secondary btn-sort"><i id="4" class="fas fa-sort text-white"></i></button></th>
+                    </tr>
+                </thead>
+                <tbody v-if="users.length != 0">
+                    <tr v-for="(oneUser, index) in filteredUsers" :key="index">
+                        <td>
+                            <a :href="oneUser.url" class="text-decoration-none">
+                                {{oneUser.fullname}}
+                            </a>
+                        </td>
+                        <td :class="oneUser.party">{{oneUser.party}}</td>
+                        <td :class="oneUser.state">{{oneUser.state}}</td>
+                        <td>{{oneUser.seniority}}</td>
+                        <td>{{oneUser.votes_with_party_pct.toFixed(1)}}%</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p v-show="footer" class="text-danger font-weight-bold">Sorry. There is no members that fit your filter criterien.</p>
+        </div>
+    </main>
+
+    <footer class="d-flex align-items-start justify-content-center">
+        <small class="text-white font-weight-bold">&copy; TGIF | ALL RIGHTS RESERVED</small>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
