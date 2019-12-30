@@ -21,7 +21,7 @@ function showPage() {
 function startHouse() {
 
     var fetchConfig =
-        fetch("https://api.propublica.org/congress/v1/113/house/members.json", {
+        fetch("https://api.propublica.org/congress/v1/116/house/members.json", {
             method: "GET",
             headers: new Headers({
                 "X-API-Key": 'cHWA0cyVrIeIZHFmZyrlp3UBNFO1aqLn7LsYLij2'
